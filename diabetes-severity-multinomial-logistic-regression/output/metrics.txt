@@ -1,0 +1,15 @@
+Multinomial Logistic Regression — Diabetes Severity
+test accuracy: 0.4505
+
+Per-class precision / recall / f1:
+              precision    recall  f1-score   support
+
+        High     0.6000    0.5676    0.5833        37
+         Low     0.5484    0.4595    0.5000        37
+      Medium     0.2667    0.3243    0.2927        37
+
+    accuracy                         0.4505       111
+   macro avg     0.4717    0.4505    0.4587       111
+weighted avg     0.4717    0.4505    0.4587       111
+
+features: ['age', 'sex', 'bmi', 'bp', 's1', 's2', 's3', 's4', 's5', 's6']

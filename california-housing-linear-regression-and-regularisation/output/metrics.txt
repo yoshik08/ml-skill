@@ -1,0 +1,11 @@
+CALIFORNIA HOUSING — REGRESSION METRICS (test set)
+==================================================
+
+           model     rmse      mae       r2  cv_rmse   alpha
+LinearRegression 0.745581 0.533200 0.575788 0.720985       -
+           Ridge 0.745504 0.533179 0.575876 0.722729  3.1623
+           Lasso 0.744642 0.533145 0.576856 0.723017   0.001
+      ElasticNet 0.744752 0.533136 0.576731 0.726450   0.001
+
+Best model by test RMSE: Lasso (RMSE=0.7446, R2=0.5769)
+Regularisation (Ridge/Lasso/ElasticNet) shrinks coefficients, reducing overfitting vs plain LinearRegression.

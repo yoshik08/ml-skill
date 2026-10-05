@@ -1,0 +1,25 @@
+Auto MPG — Linear Regression
+
+A) WITHOUT scaling:
+  RMSE: 2.9854
+  R2:   0.8430
+
+B) WITH StandardScaler:
+  RMSE: 2.9854
+  R2:   0.8430
+
+max |pred_raw - pred_scaled|: 8.17e-14 (identical predictions)
+
+Coefficient magnitudes (raw vs scaled):
+  cylinders            raw=     -0.1227  scaled=     -0.2055
+  displacement         raw=      0.0162  scaled=      1.6447
+  horsepower           raw=     -0.0113  scaled=     -0.4125
+  weight               raw=     -0.0068  scaled=     -5.6948
+  acceleration         raw=      0.0747  scaled=      0.2067
+  model_year           raw=      0.8157  scaled=      2.9132
+  origin_japan         raw=     -0.0877  scaled=     -0.0349
+  origin_usa           raw=     -2.9789  scaled=     -1.4428
+
+intercept: raw=-18.7381 scaled=23.5268
+
+preprocessing: horsepower median-imputed, `name` dropped, `origin` one-hot encoded (drop_first)
