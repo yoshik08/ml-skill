@@ -1,2 +1,5 @@
-Accuracy: 0.9016
-OOB score: 0.7810
+model comparison (accuracy, roc-auc):
+GradientBoosting: accuracy=0.8525 roc_auc=0.9459
+RandomForest: accuracy=0.9016 roc_auc=0.9545
+
+best (by roc-auc): RandomForest
