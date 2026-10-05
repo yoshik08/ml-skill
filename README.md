@@ -1,24 +1,18 @@
-# 5. Titanic Survival — Full Logistic Regression Pipeline
+# 06 — Diabetes Severity: Multinomial Logistic Regression
 
-End-to-end binary classification: preprocessing + logistic regression in one
-script, trained and evaluated on a stratified 80/20 split.
+Buckets the sklearn diabetes regression target into 3 severity classes
+(Low / Medium / High by tertiles) and fits a softmax (multinomial)
+logistic regression.
+
+## Layout
+- `csv/diabetes.csv` — 442 rows; features + `progression` + `severity`
+- `code/multinomial_lr.py` — train/test split (stratified, 25% test),
+  StandardScaler, LogisticRegression (lbfgs, multinomial)
+- `output/metrics.txt` — accuracy + per-class precision/recall/f1
+- `output/confusion_matrix.png`
+- `output/coefficient_heatmap.png` — coefficients per class × feature
 
 ## Run
 ```
-python3 code/logistic_regression.py
+python3 code/multinomial_lr.py
 ```
-
-## Results (test set, n=179)
-- accuracy: 0.8156
-- precision: 0.8103
-- recall: 0.6812
-- f1: 0.7402
-- ROC-AUC: 0.8506
-
-## Contents
-- `csv/titanic.csv` — raw dataset
-- `code/logistic_regression.py` — full pipeline (preprocessing inline +
-  `LogisticRegression(max_iter=1000)`)
-- `output/metrics.txt` — all metrics
-- `output/confusion_matrix.png`, `output/roc_curve.png` — evaluation plots
-- `output/logistic_model.joblib` — fitted end-to-end model
