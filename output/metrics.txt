@@ -1,5 +1,8 @@
-model comparison (accuracy, roc-auc):
-GradientBoosting: accuracy=0.8525 roc_auc=0.9459
-RandomForest: accuracy=0.9016 roc_auc=0.9545
-
-best (by roc-auc): RandomForest
+DecisionTree: accuracy=0.8219
+  f1(bad)=0.0000
+  f1(ok)=0.4557
+  f1(good)=0.8958
+RandomForest: accuracy=0.8781
+  f1(bad)=0.0000
+  f1(ok)=0.6389
+  f1(good)=0.9297

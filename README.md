@@ -1,24 +1,19 @@
-# Heart Disease — Boosting and Interpretability
+# Wine Quality — Decision Tree and Random Forest Classification
 
-Compares gradient boosting vs random forest on the UCI Cleveland heart disease dataset,
-with permutation importance for model interpretability.
-
-## Fallback note
-`xgboost`, `lightgbm`, and `shap` could not be installed in this environment
-(disk full during pip install), so sklearn's `GradientBoostingClassifier` is used
-as the boosting model and **permutation importance** replaces SHAP. On a machine
-with those libraries, swap in `XGBClassifier` / `LGBMClassifier` and `shap.TreeExplainer`
-for a true SHAP beeswarm plot.
+Compares tree models on the UCI red wine quality dataset. Target `quality`
+is bucketed into 3 classes: bad (≤4), ok (5–6), good (≥7).
 
 ## Pipeline
-1. Load `csv/heart.csv`, median imputation, 80/20 stratified split
-2. Train GradientBoosting vs RandomForest, compare accuracy + ROC-AUC
-3. Permutation importance (10 repeats) on the better model
+1. Load `csv/winequality.csv` (1599 rows, 11 features)
+2. Bucket quality into bad/ok/good
+3. 80/20 stratified split
+4. DecisionTree (max_depth=6) vs RandomForest (200 trees) — accuracy + per-class F1
 
 ## Results
-See `output/metrics.txt`. Plot: `output/permutation_importance.png`.
+See `output/metrics.txt`.
+Plots: `output/feature_importance_compare.png`, `output/confusion_matrices.png`.
 
 ## Run
 ```
-python3 code/boosting_shap.py
+python3 code/wine_trees.py
 ```
