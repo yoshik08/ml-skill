@@ -1,26 +1,27 @@
-# 2. Titanic Survival — Preprocessing Pipeline and Cleaned Dataset
+# 03 — Adult Income: Feature Engineering and EDA
 
-Reusable sklearn preprocessing pipeline with feature engineering.
+Income prediction dataset (UCI Adult, 1994 US census). Goal: explore what
+drives >50K income and engineer useful features.
 
-## Run
-```
-python3 code/preprocess.py
-```
+## structure
+- `csv/adult.data` — raw download (no header)
+- `csv/adult.csv` — cleaned: header added, whitespace stripped, `?` → NaN, missing rows dropped (30,162 rows)
+- `code/fe_eda.py` — full pipeline, run: `python3 code/fe_eda.py`
+- `output/` — plots, engineered dataset, report
 
-## Pipeline
-`FunctionTransformer` (engineers `FamilySize`, `IsAlone`) →
-`ColumnTransformer`:
-- numerics (`Age`, `Fare`, `SibSp`, `Parch`, `FamilySize`, `IsAlone`):
-  median impute → standard scale
-- categoricals (`Pclass`, `Sex`, `Embarked`):
-  most-frequent impute → one-hot encode
-- drops `Name`, `Ticket`, `Cabin`
-- stratified 80/20 train/test split (`random_state=42`)
+## EDA
+- income is imbalanced: ~75% ≤50K
+- >50K rate rises steeply with education (Doctorate/Prof-school highest)
+- males have a much higher >50K rate than females in this sample
+- >50K earners work more hours/week on average
 
-## Contents
-- `csv/titanic.csv` — raw dataset
-- `code/preprocess.py` — pipeline script
-- `output/titanic_cleaned.csv` — cleaned full dataset (891×11, zero nulls)
-- `output/preprocess_pipeline.joblib` — fitted pipeline (reuse in modeling)
-- `output/splits.joblib` — train/test splits
-- `output/preprocessing_report.txt` — shape/null counts before & after
+## feature engineering
+- `capital_net` = capital-gain − capital-loss (positive corr with high income)
+- `age_bin` — young / adult / middle / senior
+- `hours_bin` — part-time / full-time / overtime
+- `education_group` — dropout / high-school / college / bachelors / postgrad
+
+## output
+- `income_distribution.png`, `income_by_education.png`, `income_by_sex.png`, `hours_by_income.png`
+- `adult_engineered.csv` — full dataset with new features
+- `eda_report.txt` — numbers + key findings
