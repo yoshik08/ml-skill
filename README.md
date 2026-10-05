@@ -1,18 +1,23 @@
-# 06 — Diabetes Severity: Multinomial Logistic Regression
+# 07 — Auto MPG: Linear Regression, Feature Scaling, and Encoding
 
-Buckets the sklearn diabetes regression target into 3 severity classes
-(Low / Medium / High by tertiles) and fits a softmax (multinomial)
-logistic regression.
+Predicts `mpg` from the seaborn mpg dataset with LinearRegression.
 
 ## Layout
-- `csv/diabetes.csv` — 442 rows; features + `progression` + `severity`
-- `code/multinomial_lr.py` — train/test split (stratified, 25% test),
-  StandardScaler, LogisticRegression (lbfgs, multinomial)
-- `output/metrics.txt` — accuracy + per-class precision/recall/f1
-- `output/confusion_matrix.png`
-- `output/coefficient_heatmap.png` — coefficients per class × feature
+- `csv/mpg.csv` — 398 rows; horsepower median-imputed, `name` dropped,
+  `origin` one-hot encoded (drop_first)
+- `code/mpg_regression.py` — compares LinearRegression **without** scaling
+  vs **with** StandardScaler (coefficient magnitudes differ, predictions
+  identical), reports RMSE / R²
+- `output/metrics.txt`
+- `output/scaling_comparison.png` — |coefficients| raw vs standardized
+- `output/residual_plot.png`
 
 ## Run
 ```
-python3 code/multinomial_lr.py
+python3 code/mpg_regression.py
 ```
+
+## Key result
+Scaling does not change predictions (max |diff| ≈ 1e-14) or RMSE/R² —
+it only rescales the coefficients, which matters for regularised models
+and coefficient interpretability.

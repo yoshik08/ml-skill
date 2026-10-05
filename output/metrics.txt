@@ -1,15 +1,25 @@
-Multinomial Logistic Regression — Diabetes Severity
-test accuracy: 0.4505
+Auto MPG — Linear Regression
 
-Per-class precision / recall / f1:
-              precision    recall  f1-score   support
+A) WITHOUT scaling:
+  RMSE: 2.9854
+  R2:   0.8430
 
-        High     0.6000    0.5676    0.5833        37
-         Low     0.5484    0.4595    0.5000        37
-      Medium     0.2667    0.3243    0.2927        37
+B) WITH StandardScaler:
+  RMSE: 2.9854
+  R2:   0.8430
 
-    accuracy                         0.4505       111
-   macro avg     0.4717    0.4505    0.4587       111
-weighted avg     0.4717    0.4505    0.4587       111
+max |pred_raw - pred_scaled|: 8.17e-14 (identical predictions)
 
-features: ['age', 'sex', 'bmi', 'bp', 's1', 's2', 's3', 's4', 's5', 's6']
+Coefficient magnitudes (raw vs scaled):
+  cylinders            raw=     -0.1227  scaled=     -0.2055
+  displacement         raw=      0.0162  scaled=      1.6447
+  horsepower           raw=     -0.0113  scaled=     -0.4125
+  weight               raw=     -0.0068  scaled=     -5.6948
+  acceleration         raw=      0.0747  scaled=      0.2067
+  model_year           raw=      0.8157  scaled=      2.9132
+  origin_japan         raw=     -0.0877  scaled=     -0.0349
+  origin_usa           raw=     -2.9789  scaled=     -1.4428
+
+intercept: raw=-18.7381 scaled=23.5268
+
+preprocessing: horsepower median-imputed, `name` dropped, `origin` one-hot encoded (drop_first)
